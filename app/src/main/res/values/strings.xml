@@ -5,6 +5,13 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
-    <string name="title_activity_add_dish">AddDish</string>
     <string name="title_activity_add_dishes">AddDishes</string>
+    <string-array name="Dishes">
+        <item>Thepla</item>
+        <item>Pizzas</item>
+        <item>Dhoklas</item>
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

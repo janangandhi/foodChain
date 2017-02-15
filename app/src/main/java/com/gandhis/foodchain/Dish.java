@@ -6,7 +6,6 @@ package com.gandhis.foodchain;
 public class Dish {
     private String Name;
     private long id;
-    private boolean favoriteId;
 
 
     public long getId() {
@@ -15,14 +14,6 @@ public class Dish {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public boolean isFavoriteId() {
-        return favoriteId;
-    }
-
-    public void setFavoriteId(boolean favoriteId) {
-        this.favoriteId = favoriteId;
     }
 
     public String getName() {

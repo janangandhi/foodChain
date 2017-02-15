@@ -11,15 +11,13 @@ class FoodChainDatabaseHelper extends SQLiteOpenHelper {
 
 
     public static final String DB_NAME = "FoodChain"; // the name of our database
-    public static final int DB_VERSION = 1; // the version of the database
+    public static final int DB_VERSION = 2; // the version of the database
     public static final String TABLE_NAME= "dishes";
     public static final String COLUMN_ID= "_id";
     public static final String COULUMN_NAME = "NAME"; // the version of the database
-    public static final String COULUMN_FAVORITE = "FAVORITE"; // the version of the database
     public static final String DATABASE_CREATE = "Create table "+TABLE_NAME+"("
             +COLUMN_ID+" INTEGER PRIMARY KEY AUTOINCREMENT, "
-            + COULUMN_NAME+" TEXT, "
-            + COULUMN_FAVORITE+" BOOLEAN NOT NULL DEFAULT false);";
+            + COULUMN_NAME+" TEXT NOT NULL);";
 
     FoodChainDatabaseHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
@@ -35,7 +33,7 @@ class FoodChainDatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS " + DB_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         onCreate(db);
     }
     /*

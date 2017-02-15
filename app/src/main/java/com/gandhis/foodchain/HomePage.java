@@ -3,7 +3,10 @@ package com.gandhis.foodchain;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -15,16 +18,27 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import java.sql.SQLException;
+import java.util.List;
+import java.util.Random;
+
 
 public class HomePage extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+
+    private DishesSource dishSource;
+    private List<Dish> DishesArray;
+    private Dish BufferDish;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
         FragmentTransaction ft1 = getFragmentManager().beginTransaction();
         ft1.replace(R.id.content_frame,new HomePageFrag()).commit();
+        dishSource=new DishesSource(this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -100,14 +114,22 @@ public class HomePage extends AppCompatActivity
         return true;
     }
 
-    public void findDish(View view)
+    public void findDish(View view)throws SQLException
     {
-        if(GlobalVars.getInstance().dishes.size() == 0)
-        {
-            CharSequence text = "Please add some dishes first!!!";
-            int duration = Toast.LENGTH_SHORT;
-            Toast toast = Toast.makeText(this, text, duration);
-            toast.show();
-        }
+        Log.w("hi","reached here");
+        dishSource.open();
+
+        DishesArray=dishSource.getAllDishes();
+        BufferDish=DishesArray.get(new Random().nextInt(DishesArray.size()));
+        Bundle dishBundle = new Bundle();
+        dishBundle.putString("dish name", BufferDish.getName());
+        Fragment dispCall = new dishDisplay();
+        dispCall.setArguments(dishBundle);
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        ft.replace(R.id.content_frame, dispCall);
+        ft.addToBackStack(null);
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        ft.commit();
+
     }
 }

@@ -33,11 +33,10 @@ public class DishesSource {
         db_helper.close();
     }
 
-    public void createDish(String Name,boolean favoriteStatus)
+    public void createDish(String Name)
     {
         ContentValues values = new ContentValues();
         values.put(FoodChainDatabaseHelper.COULUMN_NAME, Name);
-        values.put(FoodChainDatabaseHelper.COULUMN_FAVORITE, favoriteStatus);
         database.insert(FoodChainDatabaseHelper.TABLE_NAME, null, values);
 
     }
@@ -59,12 +58,18 @@ public class DishesSource {
         return dish;
     }
 
+    public void delteDish(Dish tobedead) {
+        long id = tobedead.getId();
+        database.delete(FoodChainDatabaseHelper.TABLE_NAME, FoodChainDatabaseHelper.COLUMN_ID
+                + " = " + id, null);
+    }
+
+
+
     private Dish cursorToDish(Cursor cursor) {
         Dish dish = new Dish();
         dish.setId(cursor.getLong(0));
         dish.setName(cursor.getString(cursor.getColumnIndex(FoodChainDatabaseHelper.COULUMN_NAME)));
-        boolean completed = cursor.getInt(cursor.getColumnIndex(FoodChainDatabaseHelper.COULUMN_FAVORITE))>0;
-        dish.setFavoriteId(completed);
         return dish;
     }
 }

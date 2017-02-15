@@ -5,6 +5,7 @@ import android.app.ListFragment;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,10 +27,12 @@ public class ViewDishes extends ListFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+        FoodChainDatabaseHelper dbhelper = new FoodChainDatabaseHelper(getActivity());
+        db=dbhelper.getWritableDatabase();
+        if(db.isOpen())
+            Log.w("Status of db","Open" );
         try
         {
-            FoodChainDatabaseHelper dbhelper = new FoodChainDatabaseHelper(getActivity());
-            db=dbhelper.getReadableDatabase();
             cursor= db.query(dbhelper.TABLE_NAME,
                     new String[]{dbhelper.COLUMN_ID, dbhelper.COULUMN_NAME},
                     null,
@@ -37,6 +40,7 @@ public class ViewDishes extends ListFragment {
                     null,
                     null,
                     null);
+            Log.w("String","Reached here");
             CursorAdapter list = new SimpleCursorAdapter(getActivity(),
                     android.R.layout.simple_list_item_1,
                     cursor,
@@ -44,18 +48,23 @@ public class ViewDishes extends ListFragment {
                     new int[]{android.R.id.text1},
                     0);
             setListAdapter(list);
+
         }
         catch(Exception e) {
+            e.printStackTrace();
             Toast toast = Toast.makeText(getActivity(), "Database unavailable", Toast.LENGTH_SHORT);
             toast.show();
         }
-        finally {
-            db.close();
-            cursor.close();
-        }
+
+
 
 
         return super.onCreateView(inflater, container, savedInstanceState);
     }
 
+    @Override
+    public void onStop() {
+        super.onStop();
+        cursor.close();
+    }
 }

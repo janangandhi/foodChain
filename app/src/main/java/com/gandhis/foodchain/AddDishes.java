@@ -33,7 +33,7 @@ public class AddDishes extends AppCompatActivity {
         String name = String.valueOf(dishName.getText());
         dishSource.open();
         dishSource.createDish(name);
-        Toast toast = Toast.makeText(this,"Dish added to favorites",Toast.LENGTH_SHORT);
+        Toast toast = Toast.makeText(this,"Dish added",Toast.LENGTH_SHORT);
         toast.show();
     }
 

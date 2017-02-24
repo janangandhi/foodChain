@@ -3,7 +3,7 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
     <ListView
-        android:id="@id/android:list"
+        android:id="@+id/list_select"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
@@ -11,9 +11,14 @@
         android:drawSelectorOnTop="false" />
 
     <TextView
-        android:id="@id/android:empty"
+        android:id="@+id/empty"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="No data" />
+        android:text="Please add some \ndishes first!"
+        android:textSize="26sp"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:visibility="gone"/>
 
 </LinearLayout>

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -62,11 +63,12 @@ public class DishesSource {
         long id = tobedead.getId();
         database.delete(FoodChainDatabaseHelper.TABLE_NAME, FoodChainDatabaseHelper.COLUMN_ID
                 + " = " + id, null);
+        Log.w("Deleted:", tobedead.getName());
     }
 
 
 
-    private Dish cursorToDish(Cursor cursor) {
+    public Dish cursorToDish(Cursor cursor) {
         Dish dish = new Dish();
         dish.setId(cursor.getLong(0));
         dish.setName(cursor.getString(cursor.getColumnIndex(FoodChainDatabaseHelper.COULUMN_NAME)));

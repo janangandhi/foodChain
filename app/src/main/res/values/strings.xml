@@ -6,10 +6,11 @@
 
     <string name="action_settings">Settings</string>
     <string name="title_activity_add_dishes">AddDishes</string>
-    <string-array name="Dishes">
-        <item>Thepla</item>
-        <item>Pizzas</item>
-        <item>Dhoklas</item>
+    <string-array name="Header_titles">
+        <item>Today\'s menu</item>
+        <item>How about some</item>
+        <item>Let\'s eat</item>
+        <item>Chef\'s Choice</item>
     </string-array>
 
     <!-- TODO: Remove o r change this placeholder text -->

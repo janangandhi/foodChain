@@ -1,7 +1,6 @@
 package com.gandhis.foodchain;
 
 
-import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.util.Log;
@@ -33,12 +32,13 @@ public class dishDisplay extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         dishName=getArguments().getString("dish name");
-        Log.w("In dispDish", "reached here "+dishName);
+        Log.w("In dispDish", "reached here " + dishName);
         View rootView = inflater.inflate(R.layout.fragment_dish_display, container,false);
         TextView dishNameText = (TextView) rootView.findViewById(R.id.dishSelected);
-        Log.w("Value of text before",String.valueOf(dishNameText.getText()));
         dishNameText.setText(dishName);
-        Log.w("Value of text after", String.valueOf(dishNameText.getText()));
+        TextView dishNameHeader = (TextView) rootView.findViewById(R.id.header);
+        String[] headers=getResources().getStringArray(R.array.Header_titles);
+        dishNameHeader.setText(headers[new Random().nextInt(headers.length)]);
         return rootView;
     }
 
@@ -48,6 +48,9 @@ public class dishDisplay extends Fragment {
         DishesArray=dishSource.getAllDishes();
         TextView tv= (TextView)getView().findViewById(R.id.dishSelected);
         tv.setText(DishesArray.get(new Random().nextInt(DishesArray.size())).getName());
+        String[] headers=getResources().getStringArray(R.array.Header_titles);
+        TextView dishNameHeader = (TextView) getView().findViewById(R.id.header);
+        dishNameHeader.setText(headers[new Random().nextInt(headers.length)]);
     }
 
 }

@@ -4,7 +4,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import java.sql.SQLException;
@@ -40,6 +39,17 @@ public class DishesSource {
         values.put(FoodChainDatabaseHelper.COULUMN_NAME, Name);
         database.insert(FoodChainDatabaseHelper.TABLE_NAME, null, values);
 
+    }
+
+    public boolean duplicateAddCheck(String name)
+    {
+        List<Dish> dishnames=getAllDishes();
+        for(int i=0;i<dishnames.size();i++)
+        {
+            if(dishnames.get(i).getName().equalsIgnoreCase(name))
+                return false;
+        }
+        return true;
     }
 
     public List<Dish> getAllDishes() {

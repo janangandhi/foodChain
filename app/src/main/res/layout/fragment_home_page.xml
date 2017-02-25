@@ -17,7 +17,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Confused??\n Dont know what to cook??\n Tired of thinking of new\n dishes to cook everyday??\n Here's the solution!!"
         android:gravity="center"
-        android:textSize="26sp"
+        android:textSize="30sp"
         android:textColor="#6f7597" />
 
     <Button
@@ -26,8 +26,8 @@
         android:text="Click me!!"
         android:id="@+id/button"
         android:onClick="findDish"
-        android:background="#c2c3c6"/>
+        android:background="#8e919e"/>
 
     <View android:layout_width="0dp" android:layout_height="1dp"
-        android:layout_weight=".20"></View>
+        android:layout_weight=".10"></View>
 </LinearLayout>

@@ -13,19 +13,35 @@
     tools:showIn="@layout/activity_add_dishes"
     android:weightSum="1">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add a dish"
+        android:gravity="center"
+        android:paddingTop="30dp"
+        android:textStyle="bold|italic"
+        android:textSize="40dp"
+        android:textColor="#6f7597"
+        android:textColorHighlight="@color/color_action_mode_bg"
+        android:fontFamily=""/>
+
+
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/dishname"
-        android:hint="Name"/>
+        android:layout_gravity="center"
+        android:paddingTop="20dp"
+        android:hint="Dish Name"/>
 
     <View android:layout_width="0dp"
-        android:layout_height="1dp" />
+        android:layout_height="20dp" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
         android:text="Add"
         android:onClick="dishInsert"
         android:id="@+id/add_dish" />

@@ -3,8 +3,6 @@ package com.gandhis.foodchain;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -116,20 +114,24 @@ public class HomePage extends AppCompatActivity
 
     public void findDish(View view)throws SQLException
     {
-        Log.w("hi","reached here");
+        Log.w("hi", "reached here");
         dishSource.open();
 
         DishesArray=dishSource.getAllDishes();
-        BufferDish=DishesArray.get(new Random().nextInt(DishesArray.size()));
-        Bundle dishBundle = new Bundle();
-        dishBundle.putString("dish name", BufferDish.getName());
-        Fragment dispCall = new dishDisplay();
-        dispCall.setArguments(dishBundle);
-        FragmentTransaction ft = getFragmentManager().beginTransaction();
-        ft.replace(R.id.content_frame, dispCall);
-        ft.addToBackStack(null);
-        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-        ft.commit();
-
+        if(DishesArray.isEmpty())
+            Toast.makeText(this, "Add some Dishes first!!", Toast.LENGTH_LONG).show();
+        else
+        {
+            BufferDish = DishesArray.get(new Random().nextInt(DishesArray.size()));
+            Bundle dishBundle = new Bundle();
+            dishBundle.putString("dish name", BufferDish.getName());
+            Fragment dispCall = new dishDisplay();
+            dispCall.setArguments(dishBundle);
+            FragmentTransaction ft = getFragmentManager().beginTransaction();
+            ft.replace(R.id.content_frame, dispCall);
+            ft.addToBackStack(null);
+            ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+            ft.commit();
+        }
     }
 }

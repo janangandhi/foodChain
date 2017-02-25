@@ -11,10 +11,6 @@
             android:icon="@drawable/ic_room_service_black_24px"
             android:title="Dishes" />
 
-        <item
-            android:id="@+id/nav_preferences"
-            android:icon="@drawable/ic_settings_24dp"
-            android:title="Preferences"/>
 
     </group>
 

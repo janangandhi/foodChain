@@ -19,6 +19,7 @@ public class AddDishes extends AppCompatActivity {
     private DishesSource dishSource;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.w("Activity","addDish");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_dishes);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -69,6 +70,13 @@ public class AddDishes extends AppCompatActivity {
             }
                 else
                     Toast.makeText(this,"Dish already exists",Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onDestroy()
+    {
+        Log.w("Activity","addDish ended");
+        super.onDestroy();
     }
 
 

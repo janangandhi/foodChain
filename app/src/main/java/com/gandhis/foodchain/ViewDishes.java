@@ -34,6 +34,7 @@ public class ViewDishes extends ListFragment
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        Log.w("Fragment","view dish");
         super.onCreate(savedInstanceState);
 
     }
@@ -112,6 +113,7 @@ public class ViewDishes extends ListFragment
 
     @Override
     public void onStop() {
+        Log.w("Fragment","ViewDish end");
         super.onStop();
     }
 

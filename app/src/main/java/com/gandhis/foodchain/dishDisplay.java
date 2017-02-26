@@ -32,7 +32,7 @@ public class dishDisplay extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         dishName=getArguments().getString("dish name");
-        Log.w("In dispDish", "reached here " + dishName);
+        Log.w("Fragment", "Disp Dish");
         View rootView = inflater.inflate(R.layout.fragment_dish_display, container,false);
         TextView dishNameText = (TextView) rootView.findViewById(R.id.dishSelected);
         dishNameText.setText(dishName);
@@ -53,4 +53,9 @@ public class dishDisplay extends Fragment {
         dishNameHeader.setText(headers[new Random().nextInt(headers.length)]);
     }
 
+    @Override
+    public void onDestroy() {
+        Log.w("Fragment","Disp dish end");
+        super.onDestroy();
+    }
 }

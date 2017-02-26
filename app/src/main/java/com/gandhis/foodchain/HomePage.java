@@ -31,11 +31,11 @@ public class HomePage extends AppCompatActivity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
+        Log.w("Activity","main");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
         FragmentTransaction ft1 = getFragmentManager().beginTransaction();
-        ft1.replace(R.id.content_frame,new HomePageFrag()).commit();
+        ft1.add(R.id.content_frame,new HomePageFrag()).commit();
         dishSource=new DishesSource(this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -51,12 +51,22 @@ public class HomePage extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
+        Log.w("ïn back pressed", "here");
+        Fragment ft2= getFragmentManager().findFragmentById(R.id.content_frame);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
         }
+        else if(ft2!=null)
+        {
+            Log.w("ïn back pressed","in else condition");
+            getFragmentManager().beginTransaction().remove(ft2).commit();
+
+            super.onBackPressed();
+
+        }
+        else
+            super.onBackPressed();
     }
 
     @Override
@@ -112,6 +122,14 @@ public class HomePage extends AppCompatActivity
         return true;
     }
 
+    @Override
+    public void onDestroy()
+    {
+        dishSource.close();
+        Log.w("Activity", "main end");
+        super.onDestroy();
+    }
+
     public void findDish(View view)throws SQLException
     {
         Log.w("hi", "reached here");
@@ -129,7 +147,6 @@ public class HomePage extends AppCompatActivity
             dispCall.setArguments(dishBundle);
             FragmentTransaction ft = getFragmentManager().beginTransaction();
             ft.replace(R.id.content_frame, dispCall);
-            ft.addToBackStack(null);
             ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
             ft.commit();
         }

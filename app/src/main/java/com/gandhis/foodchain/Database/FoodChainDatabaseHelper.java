@@ -1,4 +1,4 @@
-package com.gandhis.foodchain;
+package com.gandhis.foodchain.Database;
 
 /**
  * Created by janan on 09-02-2017.
@@ -7,7 +7,7 @@ import android.content.ContentValues;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
-class FoodChainDatabaseHelper extends SQLiteOpenHelper {
+public class FoodChainDatabaseHelper extends SQLiteOpenHelper {
 
 
     public static final String DB_NAME = "FoodChain"; // the name of our database
@@ -19,7 +19,7 @@ class FoodChainDatabaseHelper extends SQLiteOpenHelper {
             +COLUMN_ID+" INTEGER PRIMARY KEY AUTOINCREMENT, "
             + COULUMN_NAME+" TEXT NOT NULL);";
 
-    FoodChainDatabaseHelper(Context context) {
+    public FoodChainDatabaseHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
     }
 

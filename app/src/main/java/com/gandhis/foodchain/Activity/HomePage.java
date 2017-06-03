@@ -1,4 +1,10 @@
-package com.gandhis.foodchain;
+package com.gandhis.foodchain.Activity;
+
+import com.gandhis.foodchain.Database.*;
+import com.gandhis.foodchain.Fragment.HomePageFrag;
+import com.gandhis.foodchain.R;
+import com.gandhis.foodchain.Fragment.ViewDishes;
+import com.gandhis.foodchain.Fragment.dishDisplay;
 
 import android.app.Fragment;
 import android.app.FragmentTransaction;
@@ -15,7 +21,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
-
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Random;

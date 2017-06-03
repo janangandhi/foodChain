@@ -1,6 +1,6 @@
-package com.gandhis.foodchain;
+package com.gandhis.foodchain.Fragment;
 
-
+import com.gandhis.foodchain.Database.*;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.util.Log;
@@ -8,6 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.gandhis.foodchain.Database.Dish;
+import com.gandhis.foodchain.R;
 
 import java.sql.SQLException;
 import java.util.List;

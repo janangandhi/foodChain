@@ -1,6 +1,11 @@
-package com.gandhis.foodchain;
+package com.gandhis.foodchain.Activity;
 
 
+
+
+import com.gandhis.foodchain.Fragment.*;
+import com.gandhis.foodchain.Database.*;
+import com.gandhis.foodchain.R;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
@@ -11,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+
 
 import java.sql.SQLException;
 

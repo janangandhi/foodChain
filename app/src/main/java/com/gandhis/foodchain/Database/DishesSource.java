@@ -1,10 +1,13 @@
-package com.gandhis.foodchain;
+package com.gandhis.foodchain.Database;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
+
+import com.gandhis.foodchain.Database.Dish;
+import com.gandhis.foodchain.Database.FoodChainDatabaseHelper;
 
 import java.sql.SQLException;
 import java.util.ArrayList;

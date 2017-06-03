@@ -1,4 +1,4 @@
-package com.gandhis.foodchain;
+package com.gandhis.foodchain.Database;
 
 /**
  * Created by janan on 11-02-2017.
@@ -6,6 +6,7 @@ package com.gandhis.foodchain;
 public class Dish {
     private String Name;
     private long id;
+
 
 
     public long getId() {

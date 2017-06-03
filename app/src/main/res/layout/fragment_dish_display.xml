@@ -19,7 +19,7 @@
         android:text="Today's Menu:"
         android:gravity="center"
         android:textSize="40sp"
-        android:textColor="#ef1b22" />
+        android:textColor="#3b405c" />
 
     <TextView
         android:id="@+id/dishSelected"
@@ -33,16 +33,17 @@
         android:textColor="#4758b8" />
 
     <View android:layout_width="0dp"
-        android:layout_height="60dp" />
+        android:layout_height="80dp" />
 
     <Button
+        android:layout_marginTop="0dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Click me!!"
         android:onClick="findDish"
         android:id="@+id/button"
-        android:background="#c2c3c6"/>
+        android:background="#8e919e"/>
 
     <View android:layout_width="0dp" android:layout_height="1dp"
-        android:layout_weight=".20"></View>
+        android:layout_weight=".10"></View>
 </LinearLayout>

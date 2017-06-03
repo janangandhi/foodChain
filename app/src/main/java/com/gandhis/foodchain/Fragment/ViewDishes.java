@@ -1,6 +1,7 @@
-package com.gandhis.foodchain;
+package com.gandhis.foodchain.Fragment;
 
 
+import com.gandhis.foodchain.Database.*;
 import android.app.ListFragment;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -18,6 +19,7 @@ import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.gandhis.foodchain.R;
 
 import java.sql.SQLException;
 
